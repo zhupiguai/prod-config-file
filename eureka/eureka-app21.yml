@@ -1,0 +1,21 @@
+server:
+  port: 10010
+
+eureka:
+  instance:
+    hostname: 10.11.11.123
+    preferIpAddress: true
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://10.11.11.124:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    #enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+    registry-fetch-interval-seconds: 5
+    leaseRenewalIntervalInseconds: 10
+    renewalPercentThreshold: 0.49
